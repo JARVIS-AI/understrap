@@ -25,3 +25,8 @@ Thumbs.db
 *.bak
 
 *.swp
+.idea/
+
+phpcs.xml.dist
+.phpcs.xml
+.phpcs-cache

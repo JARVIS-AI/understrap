@@ -1,13 +1,16 @@
 <?php
 /**
- * The template for displaying search results pages.
+ * The template for displaying search results pages
  *
- * @package understrap
+ * @package UnderStrap
  */
+
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
@@ -25,27 +28,32 @@ $container   = get_theme_mod( 'understrap_container_type' );
 				<?php if ( have_posts() ) : ?>
 
 					<header class="page-header">
-						
-							<h1 class="page-title"><?php printf(
-							/* translators:*/
-							 esc_html__( 'Search Results for: %s', 'understrap' ),
-								'<span>' . get_search_query() . '</span>' ); ?></h1>
+
+							<h1 class="page-title">
+								<?php
+								printf(
+									/* translators: %s: query term */
+									esc_html__( 'Search Results for: %s', 'understrap' ),
+									'<span>' . get_search_query() . '</span>'
+								);
+								?>
+							</h1>
 
 					</header><!-- .page-header -->
 
 					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php
+					while ( have_posts() ) :
+						the_post();
 
-						<?php
-						/**
+						/*
 						 * Run the loop for the search to output the results.
 						 * If you want to overload this in a child theme then include a file
 						 * called content-search.php and that will be used instead.
 						 */
 						get_template_part( 'loop-templates/content', 'search' );
-						?>
-
-					<?php endwhile; ?>
+					endwhile;
+					?>
 
 				<?php else : ?>
 
@@ -58,13 +66,14 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			<!-- The pagination component -->
 			<?php understrap_pagination(); ?>
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+			<!-- Do the right sidebar check -->
+			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
-	</div><!-- .row -->
+		</div><!-- .row -->
 
-</div><!-- Container end -->
+	</div><!-- #content -->
 
-</div><!-- Wrapper end -->
+</div><!-- #search-wrapper -->
 
-<?php get_footer(); ?>
+<?php
+get_footer();

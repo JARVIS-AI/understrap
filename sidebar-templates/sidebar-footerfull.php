@@ -1,11 +1,14 @@
 <?php
 /**
- * Sidebar setup for footer full.
+ * Sidebar setup for footer full
  *
- * @package understrap
+ * @package UnderStrap
  */
 
-$container   = get_theme_mod( 'understrap_container_type' );
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
+$container = get_theme_mod( 'understrap_container_type' );
 
 ?>
 
@@ -27,4 +30,5 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 	</div><!-- #wrapper-footer-full -->
 
-<?php endif; ?>
+	<?php
+endif;
